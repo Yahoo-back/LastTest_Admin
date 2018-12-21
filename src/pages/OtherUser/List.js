@@ -18,6 +18,7 @@ import {
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 const FormItem = Form.Item;
+const Search = Input.Search;
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ otherUser }) => ({
@@ -205,16 +206,18 @@ class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={24} sm={24}>
             <FormItem>
-              <Input
-                placeholder="用户名"
+              <Search
+                placeholder="请输入用户名"
                 value={this.state.keyword}
+                onSearch={this.handleSearch}
                 onChange={this.handleChangeKeyword}
+                style={{ width: 260 }}
               />
             </FormItem>
 
             {
               // <Select
-              //   style={{ width: 200, marginRight: 20 }}
+              //   style={{ width: 200, marginRight: 20, marginTop: 3}}
               //   placeholder="选择类型"
               //   onChange={this.handleChangeType}
               // >
@@ -223,17 +226,6 @@ class TableList extends PureComponent {
               //   <Select.Option value="2">管理员</Select.Option>
               // </Select>
             }
-
-            <span>
-              <Button
-                onClick={this.handleSearch}
-                style={{ marginTop: '3px' }}
-                type="primary"
-                icon="search"
-              >
-                Search
-              </Button>
-            </span>
           </Col>
         </Row>
       </Form>

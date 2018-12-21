@@ -106,7 +106,7 @@ export default {
   'menu.account.settings': '個人設置',
   'menu.account.trigger': '觸發報錯',
   'menu.account.logout': '退出登錄',
-  'app.login.tab-login-credentials': '賬戶密碼登錄',
+  'app.login.tab-login-credentials': '邮箱密碼登錄',
   'app.login.tab-login-mobile': '手機號登錄',
   'app.login.remember-me': '自動登錄',
   'app.login.forgot-password': '忘記密碼',

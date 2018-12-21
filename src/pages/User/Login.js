@@ -78,19 +78,19 @@ class LoginPage extends Component {
             this.loginForm = form;
           }}
         >
-          <Tab key="account" tab={formatMessage({ id: 'app.login.tab-login-credentials' })}>
+          <div key="account">
             {login.status === 'error' &&
               login.type === 'account' &&
               !submitting &&
-              this.renderMessage('账户或密码错误（admin/888888）')}
+              this.renderMessage('账户或密码错误')}
             {/* <UserName name="userName" placeholder="admin/user" /> */}
-            <UserName name="email" placeholder="admin/user" />
+            <UserName name="email" placeholder="请输入邮箱" />
             <Password
               name="password"
-              placeholder="888888/123456"
+              placeholder="请输入密码"
               onPressEnter={() => this.loginForm.validateFields(this.handleSubmit)}
             />
-          </Tab>
+          </div>
           {/* <Tab key="account" tab={formatMessage({ id: 'app.login.tab-login-credentials' })}>
             {login.status === 'error' &&
               login.type === 'account' &&

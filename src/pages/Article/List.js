@@ -20,6 +20,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import ArticleComponent from './ArticleComponent';
 
 const FormItem = Form.Item;
+const Search = Input.Search;
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ article }) => ({
@@ -52,17 +53,19 @@ class TableList extends PureComponent {
       pageSize: 10,
       columns: [
         {
-          title: '标题',
-          width: '250',
+          title: '菜名',
+          width: 140,
           dataIndex: 'title',
+          fixed: 'left'
         },
         {
           title: '作者',
+          width: 130,
           dataIndex: 'author',
         },
         {
           title: '关键字',
-          width: '200',
+          width: 130,
           dataIndex: 'keyword',
           render: arr => (
             <span>
@@ -77,11 +80,13 @@ class TableList extends PureComponent {
         {
           title: '封面图',
           dataIndex: 'img_url',
+          width: 140,
           render: val => <Avatar shape="square" src={val} size={64} icon="user" />,
         },
         {
           title: '标签',
           dataIndex: 'tags',
+          width: 120,
           render: arr => (
             <span>
               {arr.map(item => (
@@ -94,6 +99,7 @@ class TableList extends PureComponent {
         },
         {
           title: '分类',
+          width: 120,
           dataIndex: 'category',
           render: arr => (
             <span>
@@ -108,6 +114,7 @@ class TableList extends PureComponent {
         {
           title: '状态',
           dataIndex: 'state',
+          width: 120,
           render: val => {
             // 文章发布状态 => 0 草稿，1 已发布
             if (val === 0) {
@@ -121,15 +128,17 @@ class TableList extends PureComponent {
         {
           title: '观看/点赞/评论',
           dataIndex: 'meta',
+          width: 150,
           render: val => (
             <div>
               {' '}
-              <span>{val.views}</span> <span>{val.likes}</span> <span>{val.comments}</span>{' '}
+              <span>观看：{val.views}</span> <span>点赞：{val.likes}</span> <span>评论：{val.comments}</span>{' '}
             </div>
           ),
         },
         {
           title: '原创状态',
+          width: 120,
           dataIndex: 'origin',
           render: val => {
             // 文章转载状态 => 0 原创，1 转载，2 混合
@@ -145,20 +154,25 @@ class TableList extends PureComponent {
         {
           title: '创建时间',
           dataIndex: 'create_time',
+          width: 150,
           sorter: true,
           render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
         },
         {
           title: '操作',
-          width: '300',
+          width: 120,
+          fixed: 'right',
           render: (text, record) => (
             <div>
               <Fragment>
                 <a onClick={() => this.showModal(record)}>修改</a>
               </Fragment>
               <Divider type="vertical" />
-              <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(text, record)}>
-                <a href="javascript:;">Delete</a>
+              <Popconfirm
+                title="确定要删除该菜谱吗?"
+                onConfirm={() => this.handleDelete(text, record)}
+              >
+                <a href="javascript:;">删除</a>
               </Popconfirm>
             </div>
           ),
@@ -195,31 +209,31 @@ class TableList extends PureComponent {
   handleSubmit() {
     const { dispatch } = this.props;
     const { articleDetail } = this.props.article;
-    if(!this.state.title){
-			notification.error({
-				message: "文章标题不能为空",
-			});
-			return
-		}
-		if(!this.state.keyword){
-			notification.error({
-				message: "文章关键字不能为空",
-			});
-			return
-		}
-		if(!this.state.content){
-			notification.error({
-				message: "文章内容不能为空",
-			});
-			return
-		}
-		if (keyword instanceof Array) {
-			keyword = keyword.join(',');
-		}
-		this.setState({
-			loading: true,
+    if (!this.state.title) {
+      notification.error({
+        message: '文章标题不能为空',
+      });
+      return;
+    }
+    if (!this.state.keyword) {
+      notification.error({
+        message: '文章关键字不能为空',
+      });
+      return;
+    }
+    if (!this.state.content) {
+      notification.error({
+        message: '文章内容不能为空',
+      });
+      return;
+    }
+    if (keyword instanceof Array) {
+      keyword = keyword.join(',');
+    }
+    this.setState({
+      loading: true,
     });
-    
+
     let keyword = this.state.keyword;
     if (keyword instanceof Array) {
       keyword = keyword.join(',');
@@ -574,16 +588,18 @@ class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={24} sm={24}>
             <FormItem>
-              <Input
-                placeholder="标题/描述"
+              <Search
+                placeholder="请输入菜名/描述"
                 value={this.state.searchKeyword}
+                onSearch={this.handleSearch}
                 onChange={this.handleChangeSearchKeyword}
+                style={{ width: 260 }}
               />
             </FormItem>
 
             <Select
-              style={{ width: 200, marginRight: 20 }}
-              placeholder="选择状态"
+              style={{ width: 140, marginRight: 20 }}
+              placeholder="选择菜谱状态"
               onChange={this.handleChangeSearchState}
             >
               {/* 文章发布状态 => 0 草稿，1 已发布'' 代表所有文章 */}
@@ -592,16 +608,6 @@ class TableList extends PureComponent {
               <Select.Option value="1">已发布</Select.Option>
             </Select>
 
-            <span>
-              <Button
-                onClick={this.handleSearch}
-                style={{ marginTop: '3px' }}
-                type="primary"
-                icon="search"
-              >
-                Search
-              </Button>
-            </span>
             <span>
               <Button
                 onClick={() => {
@@ -637,7 +643,7 @@ class TableList extends PureComponent {
     };
 
     return (
-      <PageHeaderWrapper title="文章管理">
+      <PageHeaderWrapper title="菜谱管理">
         <Card bordered={false}>
           <div className="">
             <div className="">{this.renderSimpleForm()}</div>
@@ -647,12 +653,12 @@ class TableList extends PureComponent {
               pagination={pagination}
               rowKey={record => record._id}
               columns={this.state.columns}
-              bordered
               dataSource={articleList}
+              scroll={{ x: 1500, y: 500 }}
             />
           </div>
         </Card>
-              
+
         <ArticleComponent
           changeType={this.state.changeType}
           title={this.state.title}

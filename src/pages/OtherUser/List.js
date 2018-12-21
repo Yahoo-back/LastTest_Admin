@@ -40,6 +40,7 @@ class TableList extends PureComponent {
           title: '用户名',
           dataIndex: 'name',
           width: 100,
+          fixed: 'left',
         },
         {
           title: '邮箱',
@@ -260,7 +261,6 @@ class TableList extends PureComponent {
               pagination={pagination}
               rowKey={record => record._id}
               columns={this.state.columns}
-              // bordered
               dataSource={userList}
               scroll={{ x: 1200, y: 500 }}
             />

@@ -68,53 +68,58 @@ export default class GlobalHeaderRight extends PureComponent {
     }
     return (
       <div className={className}>
-        <Tooltip title={formatMessage({ id: 'component.globalHeader.help' })}>
-          <a
-            target="_blank"
-            href="https://pro.ant.design/docs/getting-started"
-            rel="noopener noreferrer"
-            className={styles.action}
-          >
-            <Icon type="question-circle-o" />
-          </a>
-        </Tooltip>
-        <NoticeIcon
-          className={styles.action}
-          count={currentUser.notifyCount}
-          onItemClick={(item, tabProps) => {
-            console.log(item, tabProps); // eslint-disable-line
-          }}
-          locale={{
-            emptyText: formatMessage({ id: 'component.noticeIcon.empty' }),
-            clear: formatMessage({ id: 'component.noticeIcon.clear' }),
-          }}
-          onClear={onNoticeClear}
-          onPopupVisibleChange={onNoticeVisibleChange}
-          loading={fetchingNotices}
-          popupAlign={{ offset: [20, -16] }}
-        >
-          <NoticeIcon.Tab
-            list={noticeData.notification}
-            title={formatMessage({ id: 'component.globalHeader.notification' })}
-            name="notification"
-            emptyText={formatMessage({ id: 'component.globalHeader.notification.empty' })}
-            emptyImage="https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg"
-          />
-          <NoticeIcon.Tab
-            list={noticeData.message}
-            title={formatMessage({ id: 'component.globalHeader.message' })}
-            name="message"
-            emptyText={formatMessage({ id: 'component.globalHeader.message.empty' })}
-            emptyImage="https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg"
-          />
-          {/* <NoticeIcon.Tab
-            list={noticeData.event}
-            title={formatMessage({ id: 'component.globalHeader.event' })}
-            name="event"
-            emptyText={formatMessage({ id: 'component.globalHeader.event.empty' })}
-            emptyImage="https://gw.alipayobjects.com/zos/rmsportal/HsIsxMZiWKrNUavQUXqx.svg"
-          /> */}
-        </NoticeIcon>
+        {
+          // 去除消息通知栏
+        }
+        {
+          // <Tooltip title={formatMessage({ id: 'component.globalHeader.help' })}>
+          //   <a
+          //     target="_blank"
+          //     href="https://pro.ant.design/docs/getting-started"
+          //     rel="noopener noreferrer"
+          //     className={styles.action}
+          //   >
+          //     <Icon type="question-circle-o" />
+          //   </a>
+          // </Tooltip>
+          // <NoticeIcon
+          //   className={styles.action}
+          //   count={currentUser.notifyCount}
+          //   onItemClick={(item, tabProps) => {
+          //     console.log(item, tabProps); // eslint-disable-line
+          //   }}
+          //   locale={{
+          //     emptyText: formatMessage({ id: 'component.noticeIcon.empty' }),
+          //     clear: formatMessage({ id: 'component.noticeIcon.clear' }),
+          //   }}
+          //   onClear={onNoticeClear}
+          //   onPopupVisibleChange={onNoticeVisibleChange}
+          //   loading={fetchingNotices}
+          //   popupAlign={{ offset: [20, -16] }}
+          // >
+          //   <NoticeIcon.Tab
+          //     list={noticeData.notification}
+          //     title={formatMessage({ id: 'component.globalHeader.notification' })}
+          //     name="notification"
+          //     emptyText={formatMessage({ id: 'component.globalHeader.notification.empty' })}
+          //     emptyImage="https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg"
+          //   />
+          //   <NoticeIcon.Tab
+          //     list={noticeData.message}
+          //     title={formatMessage({ id: 'component.globalHeader.message' })}
+          //     name="message"
+          //     emptyText={formatMessage({ id: 'component.globalHeader.message.empty' })}
+          //     emptyImage="https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg"
+          //   />
+          //   {/* <NoticeIcon.Tab
+          //     list={noticeData.event}
+          //     title={formatMessage({ id: 'component.globalHeader.event' })}
+          //     name="event"
+          //     emptyText={formatMessage({ id: 'component.globalHeader.event.empty' })}
+          //     emptyImage="https://gw.alipayobjects.com/zos/rmsportal/HsIsxMZiWKrNUavQUXqx.svg"
+          //   /> */}
+          // </NoticeIcon>
+        }
         {currentUser.name ? (
           <Dropdown overlay={menu}>
             <span className={`${styles.action} ${styles.account}`}>

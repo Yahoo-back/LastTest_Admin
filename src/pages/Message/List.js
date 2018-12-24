@@ -7,6 +7,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import MessageComponent from './MessageComponent';
 
 const FormItem = Form.Item;
+const Search = Input.Search;
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ message }) => ({
@@ -67,8 +68,8 @@ class TableList extends PureComponent {
       <a onClick={() => this.showReplyModal(true, record)}>回复</a>
     </Fragment>
     <Divider type="vertical" />
-    <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(text, record)}>
-      <a href="javascript:;">Delete</a>
+    <Popconfirm title="确定删除该留言吗?" onConfirm={() => this.handleDelete(text, record)}>
+      <a href="javascript:;">删除</a>
     </Popconfirm>
   </div>
 					),
@@ -227,15 +228,17 @@ class TableList extends PureComponent {
     <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
       <Col md={24} sm={24}>
         <FormItem>
-          <Input
-            placeholder="留言内容"
+          <Search
+            placeholder="请输入留言内容"
             value={this.state.keyword}
-            onChange={this.handleChangeKeyword}
+						onChange={this.handleChangeKeyword}
+						onSearch={this.handleSearch}
+						style={{ width: 260 }}
           />
         </FormItem>
 
         <Select
-          style={{ width: 200, marginRight: 20 }}
+          style={{ width: 140, marginRight: 20, marginTop: 3 }}
           placeholder="选择状态"
           onChange={this.handleChangeState}
         >
@@ -245,14 +248,16 @@ class TableList extends PureComponent {
         </Select>
 
         <span>
-          <Button
-            onClick={this.handleSearch}
-            style={{ marginTop: '3px' }}
-            type="primary"
-            icon="search"
-          >
-								Search
-          </Button>
+          {
+					// <Button
+          //   onClick={this.handleSearch}
+          //   style={{ marginTop: '3px' }}
+          //   type="primary"
+          //   icon="search"
+          // >
+					// 			Search
+					// </Button>
+					}
         </span>
         
       </Col>
@@ -289,7 +294,6 @@ class TableList extends PureComponent {
           pagination={pagination}
           rowKey={record => record._id}
           columns={this.state.columns}
-          bordered
           dataSource={messageList}
         />
       </div>

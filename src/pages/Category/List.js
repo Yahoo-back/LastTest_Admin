@@ -7,6 +7,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import CategoryComponent from './CategoryComponent';
 
 const FormItem = Form.Item;
+const Search = Input.Search;
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ category }) => ({
@@ -32,6 +33,7 @@ class TableList extends PureComponent {
 				{
 					title: '描述',
 					dataIndex: 'desc',
+					width: 300
 				},
 				{
 					title: '创建时间',
@@ -42,8 +44,8 @@ class TableList extends PureComponent {
 				{
 					title: '操作',
 					render: (text, record) => (
-  <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(text, record)}>
-    <a href="javascript:;">Delete</a>
+  <Popconfirm title="确定删除改分类吗?" onConfirm={() => this.handleDelete(text, record)}>
+    <a href="javascript:;">删除</a>
   </Popconfirm>
 					),
 				},
@@ -209,30 +211,33 @@ class TableList extends PureComponent {
     <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
       <Col md={24} sm={24}>
         <FormItem>
-          <Input
-            placeholder="分类名"
+          <Search
+            placeholder="请输入分类名"
             value={this.state.keyword}
-            onChange={this.handleChangeKeyword}
+						onChange={this.handleChangeKeyword}
+						onSearch={this.handleSearch}
+						style={{width: 260}}
           />
         </FormItem>
 
-        <span>
-          <Button
-            onClick={this.handleSearch}
-            style={{ marginTop: '3px' }}
-            type="primary"
-            icon="search"
-          >
-								Search
-          </Button>
-        </span>
+        {// <span>
+        //   <Button
+        //     onClick={this.handleSearch}
+        //     style={{ marginTop: '3px' }}
+        //     type="primary"
+        //     icon="search"
+        //   >
+				// 				Search
+        //   </Button>
+				// </span>
+				}
         <span>
           <Button
             style={{ marginTop: '3px', marginLeft: '20px' }}
             onClick={this.showModal}
             type="primary"
           >
-								新增
+								添加分类
           </Button>
         </span>
       </Col>
@@ -269,7 +274,6 @@ class TableList extends PureComponent {
           pagination={pagination}
           rowKey={record => record._id}
           columns={this.state.columns}
-          bordered
           dataSource={categoryList}
         />
       </div>

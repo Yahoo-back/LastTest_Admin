@@ -7,6 +7,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import TagComponent from './TagComponent';
 
 const FormItem = Form.Item;
+const Search = Input.Search;
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ tag }) => ({
@@ -39,8 +40,8 @@ class TableList extends PureComponent {
 					title: '操作',
 					render: (text, record) => (
   <Fragment>
-    <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(text, record)}>
-      <a href="javascript:;">Delete</a>
+    <Popconfirm title="确定要删除该标签?" onConfirm={() => this.handleDelete(text, record)}>
+      <a href="javascript:;">删除</a>
     </Popconfirm>
   </Fragment>
 					),
@@ -210,30 +211,33 @@ class TableList extends PureComponent {
     <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
       <Col md={24} sm={24}>
         <FormItem>
-          <Input
-            placeholder="标签名"
-            value={this.state.keyword}
-            onChange={this.handleChangeKeyword}
+          <Search
+            placeholder="请输入标签名"
+						value={this.state.keyword}
+						onSearch={this.handleSearch}
+						onChange={this.handleChangeKeyword}
+						style={{ width: 260 }}
           />
         </FormItem>
 
-        <span>
-          <Button
-            onClick={this.handleSearch}
-            style={{ marginTop: '3px' }}
-            type="primary"
-            icon="search"
-          >
-								Search
-          </Button>
-        </span>
+        {// <span>
+        //   <Button
+        //     onClick={this.handleSearch}
+        //     style={{ marginTop: '3px' }}
+        //     type="primary"
+        //     icon="search"
+        //   >
+				// 				Search
+        //   </Button>
+				// </span>
+				}
         <span>
           <Button
             style={{ marginTop: '3px', marginLeft: '20px' }}
             onClick={this.showModal}
             type="primary"
           >
-								新增
+								添加标签
           </Button>
         </span>
       </Col>
@@ -270,7 +274,6 @@ class TableList extends PureComponent {
           pagination={pagination}
           rowKey={record => record._id}
           columns={this.state.columns}
-          bordered
           dataSource={tagList}
         />
       </div>

@@ -87,7 +87,7 @@ export default {
   'menu.list.basiclist': '標淮列表',
   'menu.list.cardlist': '卡片列表',
   'menu.list.searchlist': '搜索列表',
-  'menu.list.searchlist.articles': '搜索列表（文章）',
+  'menu.list.searchlist.articles': '搜索列表（菜谱）',
   'menu.list.searchlist.projects': '搜索列表（項目）',
   'menu.list.searchlist.applications': '搜索列表（應用）',
   'menu.profile': '詳情頁',

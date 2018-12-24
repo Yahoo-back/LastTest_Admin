@@ -233,11 +233,11 @@ class TableList extends PureComponent {
 				}
         <span>
           <Button
-            style={{ marginTop: '3px', marginLeft: '20px' }}
+            style={{ marginTop: '3px', marginLeft: '10px' }}
             onClick={this.showModal}
             type="primary"
           >
-								添加标签
+								新建标签
           </Button>
         </span>
       </Col>

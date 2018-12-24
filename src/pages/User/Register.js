@@ -179,137 +179,71 @@ class Register extends Component {
     const { count, prefix, help, visible } = this.state;
     return (
       <div className={styles.main}>
-        <h3>
-          <FormattedMessage id="app.register.register" />
-        </h3>
+      
         <Form onSubmit={this.handleSubmit}>
           <FormItem>
-            {getFieldDecorator('mail', {
+            {getFieldDecorator('email', {
               rules: [
                 {
                   required: true,
-                  message: formatMessage({ id: 'validation.email.required' }),
-                },
-                {
-                  type: 'email',
-                  message: formatMessage({ id: 'validation.email.wrong-format' }),
+                  message: "请输入邮箱！",
                 },
               ],
             })(
-              <Input size="large" placeholder={formatMessage({ id: 'form.email.placeholder' })} />
+              <Input size="large" placeholder="请输入邮箱" />
             )}
           </FormItem>
-          <FormItem help={help}>
-            <Popover
-              content={
-                <div style={{ padding: '4px 0' }}>
-                  {passwordStatusMap[this.getPasswordStatus()]}
-                  {this.renderPasswordProgress()}
-                  <div style={{ marginTop: 10 }}>
-                    <FormattedMessage id="validation.password.strength.msg" />
-                  </div>
-                </div>
-              }
-              overlayStyle={{ width: 240 }}
-              placement="right"
-              visible={visible}
-            >
-              {getFieldDecorator('password', {
-                rules: [
-                  {
-                    validator: this.checkPassword,
-                  },
-                ],
-              })(
-                <Input
-                  size="large"
-                  type="password"
-                  placeholder={formatMessage({ id: 'form.password.placeholder' })}
-                />
-              )}
-            </Popover>
-          </FormItem>
           <FormItem>
-            {getFieldDecorator('confirm', {
+            {getFieldDecorator('name', {
               rules: [
                 {
                   required: true,
-                  message: formatMessage({ id: 'validation.confirm-password.required' }),
-                },
-                {
-                  validator: this.checkConfirm,
+                  message: "请输入用户名！",
                 },
               ],
-            })(
-              <Input
-                size="large"
-                type="password"
-                placeholder={formatMessage({ id: 'form.confirm-password.placeholder' })}
-              />
-            )}
+            })(<Input size="large" placeholder="请输入用户名" />)}
           </FormItem>
           <FormItem>
-            <InputGroup compact>
-              <Select
-                size="large"
-                value={prefix}
-                onChange={this.changePrefix}
-                style={{ width: '20%' }}
-              >
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-              </Select>
-              {getFieldDecorator('mobile', {
-                rules: [
-                  {
-                    required: true,
-                    message: formatMessage({ id: 'validation.phone-number.required' }),
-                  },
-                  {
-                    pattern: /^\d{10}$/,
-                    message: formatMessage({ id: 'validation.phone-number.wrong-format' }),
-                  },
-                ],
-              })(
-                <Input
-                  size="large"
-                  style={{ width: '80%' }}
-                  placeholder={formatMessage({ id: 'form.phone-number.placeholder' })}
-                />
-              )}
-            </InputGroup>
+            {getFieldDecorator('password', {
+              rules: [
+                {
+                  required: true,
+                  message: "请输入密码！",
+                },
+              ],
+            })(<Input size="large" placeholder="请输入密码" />)}
           </FormItem>
           <FormItem>
-            <Row gutter={8}>
-              <Col span={16}>
-                {getFieldDecorator('captcha', {
-                  rules: [
-                    {
-                      required: true,
-                      message: formatMessage({ id: 'validation.verification-code.required' }),
-                    },
-                  ],
-                })(
-                  <Input
-                    size="large"
-                    placeholder={formatMessage({ id: 'form.verification-code.placeholder' })}
-                  />
-                )}
-              </Col>
-              <Col span={8}>
-                <Button
-                  size="large"
-                  disabled={count}
-                  className={styles.getCaptcha}
-                  onClick={this.onGetCaptcha}
-                >
-                  {count
-                    ? `${count} s`
-                    : formatMessage({ id: 'app.register.get-verification-code' })}
-                </Button>
-              </Col>
-            </Row>
+            {getFieldDecorator('type', {
+              rules: [
+                {
+                  required: true,
+                  message: "请输入管理员类型！",
+                },
+              ],
+            })(<Input size="large" placeholder="请输入管理员类型：0" />)}
           </FormItem>
+          <FormItem>
+            {getFieldDecorator('phone', {
+              rules: [
+                {
+                  required: true,
+                  message: "请输入手机号！",
+                },
+              ],
+            })(<Input size="large" placeholder="请输入手机号" />)}
+          </FormItem>
+          <FormItem>
+            {getFieldDecorator('introduce', {
+              rules: [
+                {
+                  required: true,
+                  message: "请输入管理员自我介绍！",
+                },
+              ],
+            })(<Input size="large" placeholder="请输入管理员自我介绍" />)}
+          </FormItem>
+
           <FormItem>
             <Button
               size="large"

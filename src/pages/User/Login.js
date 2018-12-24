@@ -118,6 +118,9 @@ class LoginPage extends Component {
             {/* <a style={{ float: 'right' }} href="">
               <FormattedMessage id="app.login.forgot-password" />
             </a> */}
+            <Link to="register" style={{ float: 'right' }}>
+              注册账号
+            </Link>
           </div>
           <Submit loading={submitting}>
             <FormattedMessage id="app.login.login" />

@@ -598,7 +598,7 @@ class TableList extends PureComponent {
             </FormItem>
 
             <Select
-              style={{ width: 140, marginRight: 20 }}
+              style={{ width: 140 }}
               placeholder="选择菜谱状态"
               onChange={this.handleChangeSearchState}
             >
@@ -613,10 +613,10 @@ class TableList extends PureComponent {
                 onClick={() => {
                   this.showModal(0);
                 }}
-                style={{ marginTop: '3px', marginLeft: '10px' }}
+                style={{ marginTop: '3px', marginLeft: '20px' }}
                 type="primary"
               >
-                新增
+                新增菜谱
               </Button>
             </span>
           </Col>

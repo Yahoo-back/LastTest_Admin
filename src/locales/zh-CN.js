@@ -64,7 +64,7 @@ export default {
   'menu.link.list': '链接列表',
   'menu.category': '分类管理',
   'menu.category.list': '分类列表',
-  'menu.dashboard': 'Dashboard',
+  'menu.dashboard': '数据分析',
   'menu.dashboard.analysis': '分析页',
   'menu.dashboard.monitor': '监控页',
   'menu.dashboard.workplace': '工作台',

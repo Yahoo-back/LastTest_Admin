@@ -142,7 +142,7 @@ class ArticleComponent extends React.Component {
     return (
       <div>
         <Modal
-          title="添加与修改菜谱"
+          title="添加与修改文章"
           visible={this.props.visible}
           onOk={this.props.handleOk}
           width="800px"
@@ -206,7 +206,7 @@ class ArticleComponent extends React.Component {
           </Select>
 
           <Select
-            style={{ width: 200, marginTop: 20, marginBottom: 20 }}
+            style={{ width: 200, marginTop: 20, marginBottom: 20, marginLeft: 10 }}
             placeholder="选择文章类型"
             defaultValue={typeDefault}
             onChange={this.props.handleChangeType}
@@ -232,7 +232,7 @@ class ArticleComponent extends React.Component {
           <Select
             allowClear
             mode="multiple"
-            style={{ width: 200, marginTop: 20, marginLeft: 10, marginBottom: 20 }}
+            style={{ width: 200, marginTop: 20, marginBottom: 20 }}
             placeholder="标签"
             defaultValue={tagsDefault}
             value={this.props.tagsDefault}

@@ -142,10 +142,10 @@ class ArticleComponent extends React.Component {
     return (
       <div>
         <Modal
-          title="添加与修改文章"
+          title="添加与修改菜谱"
           visible={this.props.visible}
           onOk={this.props.handleOk}
-          width="1200px"
+          width="800px"
           onCancel={this.props.handleCancel}
         >
           <Input

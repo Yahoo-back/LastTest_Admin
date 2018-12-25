@@ -480,7 +480,9 @@ class ArticleCreate extends React.Component {
     </div>
 
     <div title="添加与修改菜谱" width="1200px">
-      <textarea id="editor" style={{ marginBottom: 20, width: 800 }} size="large" rows={6} />
+     {
+			 // <textarea id="editor" style={{ marginBottom: 20, width: 600 }} size="large" rows={6} />
+		 }
     </div>
   </div>
 		);

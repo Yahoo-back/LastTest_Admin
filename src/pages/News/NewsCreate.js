@@ -14,7 +14,7 @@ import './style.less';
 	tag,
 	category,
 }))
-class ArticleCreate extends React.Component {
+class NewsCreate extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -82,19 +82,19 @@ class ArticleCreate extends React.Component {
 		const { articleDetail } = this.props.article;
 		if(!this.state.title){
 			notification.error({
-				message: "菜名不能为空",
+				message: "文章标题不能为空",
 			});
 			return
 		}
 		if(!this.state.keyword){
 			notification.error({
-				message: "菜谱关键字不能为空",
+				message: "文章关键字不能为空",
 			});
 			return
 		}
 		if(!this.state.smde.value()){
 			notification.error({
-				message: "菜谱内容不能为空",
+				message: "文章内容不能为空",
 			});
 			return
 		}
@@ -422,7 +422,7 @@ class ArticleCreate extends React.Component {
 
     <Select
       style={{ width: 200, marginLeft: 10, marginBottom: 20 }}
-      placeholder="选择菜谱类型"
+      placeholder="选择文章类型"
       defaultValue={typeDefault}
       onChange={this.handleChangeType}
     >
@@ -479,7 +479,7 @@ class ArticleCreate extends React.Component {
       </Button>
     </div>
 
-    <div title="添加与修改菜谱" width="1200px">
+    <div title="添加与修改文章" width="1200px">
       <textarea id="editor" style={{ marginBottom: 20, width: 800 }} size="large" rows={6} />
     </div>
   </div>
@@ -487,4 +487,4 @@ class ArticleCreate extends React.Component {
 	}
 }
 
-export default ArticleCreate;
+export default NewsCreate;

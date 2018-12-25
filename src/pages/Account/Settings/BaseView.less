@@ -1,12 +1,11 @@
 @import '~antd/lib/style/themes/default.less';
-
 .baseView {
   display: flex;
   padding-top: 12px;
-
   .left {
-    max-width: 448px;
-    min-width: 224px;
+    max-width: 500px;
+    min-width: 300px;
+    margin-left: 100px;
   }
   .right {
     flex: 1;
@@ -37,7 +36,6 @@
 @media screen and (max-width: @screen-xl) {
   .baseView {
     flex-direction: column-reverse;
-
     .right {
       padding: 20px;
       display: flex;

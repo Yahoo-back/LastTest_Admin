@@ -12,20 +12,21 @@ const { Option } = Select;
 // 头像组件 方便以后独立，增加裁剪之类的功能
 const AvatarView = ({ avatar }) => (
   <Fragment>
-    <div className={styles.avatar_title}>Avatar</div>
-    <div className={styles.avatar}>
-      <img src={avatar} alt="avatar" />
-    </div>
-    <Upload fileList={[]}>
-      <div className={styles.button_view}>
-        <Button icon="upload">
-          <FormattedMessage id="app.settings.basic.avatar" defaultMessage="Change avatar" />
-        </Button>
-      </div>
-    </Upload>
+    {
+      // <div className={styles.avatar_title}>Avatar</div>
+      // <div className={styles.avatar}>
+      //   <img src={avatar} alt="avatar" />
+      // </div>
+      // <Upload fileList={[]}>
+      //   <div className={styles.button_view}>
+      //     <Button icon="upload">
+      //       <FormattedMessage id="app.settings.basic.avatar" defaultMessage="Change avatar" />
+      //     </Button>
+      //   </div>
+      // </Upload>
+    }
   </Fragment>
 );
-
 
 @connect(({ user }) => ({
   currentUser: user.currentUser,
@@ -109,9 +110,11 @@ class BaseView extends Component {
             </Button>
           </Form>
         </div>
-        <div className={styles.right}>
-          <AvatarView avatar={this.getAvatarURL()} />
-        </div>
+        {
+          // <div className={styles.right}>
+          //   <AvatarView avatar={this.getAvatarURL()} />
+          // </div>
+        }
       </div>
     );
   }

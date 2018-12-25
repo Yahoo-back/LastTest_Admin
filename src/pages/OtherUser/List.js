@@ -52,11 +52,11 @@ class TableList extends PureComponent {
           dataIndex: 'phone',
           width: 150,
         },
-        {
-          title: '头像',
-          dataIndex: 'img_url',
-          width: 100,
-        },
+        // {
+        //   title: '头像',
+        //   dataIndex: 'img_url',
+        //   width: 100,
+        // },
         {
           title: '类型',
           dataIndex: 'type',
@@ -75,7 +75,7 @@ class TableList extends PureComponent {
         {
           title: '个人介绍',
           dataIndex: 'introduce',
-          width: 200,
+          width: 260,
         },
         {
           title: '操作',

@@ -17,7 +17,7 @@ import {
   Avatar,
 } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
-import ArticleComponent from './ArticleComponent';
+import NewsComponent from './NewsComponent';
 
 const FormItem = Form.Item;
 const Search = Input.Search;
@@ -53,7 +53,7 @@ class TableList extends PureComponent {
       pageSize: 10,
       columns: [
         {
-          title: '菜名',
+          title: '标题',
           width: 140,
           dataIndex: 'title',
           fixed: 'left'
@@ -589,7 +589,7 @@ class TableList extends PureComponent {
           <Col md={24} sm={24}>
             <FormItem>
               <Search
-                placeholder="请输入菜名/描述"
+                placeholder="请输入资讯/描述"
                 value={this.state.searchKeyword}
                 onSearch={this.handleSearch}
                 onChange={this.handleChangeSearchKeyword}
@@ -599,7 +599,7 @@ class TableList extends PureComponent {
 
             <Select
               style={{ width: 140 }}
-              placeholder="选择菜谱状态"
+              placeholder="选择资讯状态"
               onChange={this.handleChangeSearchState}
             >
               {/* 文章发布状态 => 0 草稿，1 已发布'' 代表所有文章 */}
@@ -616,7 +616,7 @@ class TableList extends PureComponent {
                 style={{ marginTop: '3px', marginLeft: '20px' }}
                 type="primary"
               >
-                新增菜谱
+                新增资讯
               </Button>
             </span>
           </Col>
@@ -643,7 +643,7 @@ class TableList extends PureComponent {
     };
 
     return (
-      <PageHeaderWrapper title="菜谱管理">
+      <PageHeaderWrapper title="健康资讯管理">
         <Card bordered={false}>
           <div className="">
             <div className="">{this.renderSimpleForm()}</div>
@@ -659,7 +659,7 @@ class TableList extends PureComponent {
           </div>
         </Card>
 
-        <ArticleComponent
+        <NewsComponent
           changeType={this.state.changeType}
           title={this.state.title}
           author={this.state.author}

@@ -88,6 +88,23 @@ export default [
         ],
       },
       {
+        path: '/News',
+        name: 'News',
+        icon: 'pushpin',
+        routes: [
+          {
+            path: '/News/list',
+            name: 'list',
+            component: './News/List',
+          },
+          {
+            path: '/News/create',
+            name: 'create',
+            component: './News/NewsCreate',
+          },
+        ],
+      },
+      {
         path: '/message',
         name: 'message',
         icon: 'message',
@@ -184,11 +201,12 @@ export default [
           {
             path: '/account/settings',
             name: 'settings',
-            component: './Account/Settings/Info',
+            component: './Account/Settings/BaseView',
+            // component: './Account/Settings/Info',
             routes: [
               {
                 path: '/account/settings',
-                redirect: '/account/settings/base',
+                // redirect: '/account/settings/base',
               },
               {
                 path: '/account/settings/base',
